@@ -304,49 +304,56 @@ public class MechanicShop{
 		return input;
 	}//end readChoice
 	
-	public static void AddCustomer(MechanicShop esql) throws SQLException{//1
-		System.out.println("Enter Name:");
-		String fname = "";
-		try{
-						fname = in.readLine();
-		}catch(Exception e1){
-						System.out.println("Invalid input");
+	//This function adds a customer in the database system
+        //written by Matthew Walsh      
+        public static void AddCustomer(MechanicShop esql) throws SQLException{//1
 
-		}
+                //recieves customer's full name
+                System.out.println("Enter Customer First Name:");
+                String fname = "";
+                try{
+                                                fname = in.readLine();
+                }catch(Exception e1){
+                                                System.out.println("Invalid input");
 
-		System.out.println("Enter Last Name:");
-		String lname = "";
-		try{
-						lname = in.readLine();
-		}catch(Exception e1){
-						System.out.println("Invalid input");
+                }
 
-		}
+                System.out.println("Enter Customer Last Name:");
+                String lname = "";
+                try{
+                                                lname = in.readLine();
+                }catch(Exception e1){
+                                                System.out.println("Invalid input");
 
-		int cust_id = esql.executeQuery("SELECT * FROM Customer");
-		
-		System.out.println("Enter the Customer's phone number:");
-	
-		String phone_num_s = "";
-		try{
-						phone_num_s = in.readLine();
-		}catch(Exception e1){
-						System.out.println("Invalid input");
+                }
 
-		}
-		
+                //checks amount of rows in Customers and automatically assigns id
+                int cust_id = esql.executeQuery("SELECT * FROM Customer");
 
-		System.out.println("Enter Customer Address:");
-		String addr = "";
-		try{
-						addr = in.readLine();
-		}catch(Exception e1){
-						System.out.println("Invalid input");
+                //get customer phone number
+                System.out.println("Enter Customer Phone Number:");
+                String phone_num_s = "";
+                try{
+                                                phone_num_s = in.readLine();
+                }catch(Exception e1){
+                                                System.out.println("Invalid input");
 
-		}
-		esql.executeUpdate("INSERT INTO Customer VALUES (" + cust_id + ",'" + fname + "' , '" + lname + "', '" + phone_num_s + "' , '" + addr + "');");
-		esql.executeQueryAndPrintResult("Select * from Customer;");	
-	}
+                }
+
+                //recieve customer address
+                System.out.println("Enter Customer Address:");
+                String addr = "";
+                try{
+                                                addr = in.readLine();
+                }catch(Exception e1){
+                                                System.out.println("Invalid input");
+
+                }
+
+                //execute SQL statements
+                esql.executeUpdate("INSERT INTO Customer VALUES (" + cust_id + ",'" + fname + "' , '" + lname + "', '" + phone_num_s + "' , '" + addr + "');");
+                esql.executeQueryAndPrintResult("Select * from Customer;");
+        }
 	
 	//This function adds a mechanic
         //written by Raajitha Rajkumar
