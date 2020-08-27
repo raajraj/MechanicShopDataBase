@@ -11,6 +11,14 @@ $ git clone https://github.com/raajraj/MechanicShopDataBase.git
 $ cd MechanicShopDataBase/cs-166_phase-3_code/code/postgresql/
 ```
 
+Run these to start your server
+```
+$ source startPostgreSQL.sh
+```
+```
+$ source createPostgreSQl.sh
+```
+
 This should ouput all the files that have been created in your databse
 
 ## Running and Compiling
