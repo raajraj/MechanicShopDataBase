@@ -524,22 +524,54 @@ public class MechanicShop{
 
         }
 		
-	public static void CloseServiceRequest(MechanicShop esql) throws SQLException{//5
-                System.out.println("Enter the Service Request RID:");
-                int rid = readChoice();
-                System.out.println("Enter the Mechanic's id");
-                int mid = readChoice();
-                esql.executeQueryAndPrintResult("SELECT SR.rid, M.id FROM Mechanic M, Service_Request SR WHERE SR.rid = " + rid + " AND M.id = " + mid +"");
-                int wid = esql.executeQuery("SELECT * FROM Closed_Request");
+	//This function creates a Closed Service Request
+        //This function requires a RID and mechanic ID 
+        //This function also checks whether the mechanic id and rid are valid
+        //written by Matthew Walsh and Raajitha Rajkumar
+        public static void CloseServiceRequest(MechanicShop esql) throws SQLException{//5
+
+                int rid = 0;
+                int mid = 0;
+
+                //asks for rid as input and checks if it is valid
+                int check = 0;
+                while(check < 1){
+                        System.out.println("Enter a valid Service Request RID (if we keep asking, the id is not valid):");
+                        rid = readChoice();
+                        check = esql.executeQuery("SELECT * FROM Service_Request WHERE (rid = " + rid + ")");
+                }
+
+                //asks for mechanic id and checks if it is valid
+                check = 0;
+                while(check < 1){
+                        System.out.println("Enter a valid Mechanic ID that worked on your car (if we keep asking, the id is not valid):");
+                        mid = readChoice();
+                        check = esql.executeQuery("SELECT * FROM Mechanic WHERE (id = " + mid + ")");
+                }
+
+                //checks the rows of Closed Requests and automatically assigns a WID
+                int wid = esql.executeQuery("SELECT * FROM Closed_Request;");
                 wid = wid + 1;
-                System.out.println("What is the date?");
+
+                //recieves date and checks if it is valid
+                boolean NOdate = true;
                 String currdate = "";
-                try{
+                while(NOdate){
+                        System.out.println("What is the date (MUST BE IN FORMAT month-day-year)?");
+                        try{
                                 currdate = in.readLine();
-                }catch(Exception e9){
+                        }catch(Exception e9){
                                 System.out.println("Invalid input");
 
+                        }
+                        if(currdate.charAt(2) == '-' && currdate.charAt(5) == '-' && currdate.length() == 10){
+                                NOdate = false;
+                        }else{
+                                NOdate = true;
+                        }
                 }
+		
+		//Recieves any closing comments
                 System.out.println("Any comments?");
                 String comment = "";
                 try{
@@ -548,12 +580,16 @@ public class MechanicShop{
                                 System.out.println("Invalid input");
 
                 }
-                System.out.println("what is the bill?");
+
+                //Asks for final bill
+                System.out.println("what is the bill (MUST BE DIGITS)?");
                 int bill = readChoice();
+
+                //executes SQL statements 
                 esql.executeUpdate("INSERT INTO Closed_Request VALUES("+wid+"," + rid + "," + mid + ",'" +currdate + "','" + comment + "', " + bill + ")");
                 esql.executeQueryAndPrintResult("SELECT * FROM Closed_Request WHERE (wid = " + wid + ")");
-		
-	}
+
+        }
 	
 	// List date, comment, and bill for all closed requests with bill lower than 100
 	// written by Raajitha Rajkumar
