@@ -1,3 +1,5 @@
+#CS166 Project Phase 3
+
 ## MechanicShopDataBase
 This PostgreSQL database It contains car, customer, and mechanic data that corresponds with service requests. It also contains functions that allow users to view and modify shop data. This includes inititating and closing service requests, and viewing specific customers.
 
@@ -43,10 +45,8 @@ the function number you want to access.
 
 ### Contributors
 
-Raajitha Rajkumar
-SID 862015848
+Raajitha Rajkumar - SID 862015848
 
-Matthew Walsh
-SID 862088280
+Matthew Walsh - SID 862088280
 
 *data and starter code provided by UC Riverside CS166*
