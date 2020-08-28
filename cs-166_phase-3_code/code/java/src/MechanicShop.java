@@ -242,19 +242,22 @@ public class MechanicShop{
 			
 			boolean keepon = true;
 			while(keepon){
-				System.out.println("MAIN MENU");
-				System.out.println("---------");
-				System.out.println("1. AddCustomer");
-				System.out.println("2. AddMechanic");
-				System.out.println("3. AddCar");
-				System.out.println("4. InsertServiceRequest");
-				System.out.println("5. CloseServiceRequest");
-				System.out.println("6. ListCustomersWithBillLessThan100");
-				System.out.println("7. ListCustomersWithMoreThan20Cars");
-				System.out.println("8. ListCarsBefore1995With50000Milles");
-				System.out.println("9. ListKCarsWithTheMostServices");
-				System.out.println("10. ListCustomersInDescendingOrderOfTheirTotalBill");
-				System.out.println("11. < EXIT");
+				System.out.println("------------------------------------------------------");
+                                System.out.println("|               BAKALOV MECHANIC SHOP                |");
+                                System.out.println("|                     MAIN MENU                      |");
+                                System.out.println("------------------------------------------------------");
+                                System.out.println("| 1. AddCustomer                                     |");
+                                System.out.println("| 2. AddMechanic                                     |");
+                                System.out.println("| 3. AddCar                                          |");
+                                System.out.println("| 4. InsertServiceRequest                            |");
+                                System.out.println("| 5. CloseServiceRequest                             |");
+                                System.out.println("| 6. ListCustomersWithBillLessThan100                |");
+                                System.out.println("| 7. ListCustomersWithMoreThan20Cars                 |");
+                                System.out.println("| 8. ListCarsBefore1995With50000Milles               |");
+                                System.out.println("| 9. ListKCarsWithTheMostServices                    |");
+                                System.out.println("| 10. ListCustomersInDescendingOrderOfTheirTotalBill |");
+                                System.out.println("| 11. < EXIT                                         |");
+                                System.out.println("------------------------------------------------------");
 				
 				/*
 				 * FOLLOW THE SPECIFICATION IN THE PROJECT DESCRIPTION
