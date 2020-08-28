@@ -390,36 +390,48 @@ public class MechanicShop{
                 esql.executeQueryAndPrintResult("Select * from Mechanic;");
 	}
 	
-	public static void AddCar(MechanicShop esql) throws SQLException{//3
-		System.out.println("Enter the car's VIN:");
-		String vin = "";
-		try{
-				vin = in.readLine();
-		}catch(Exception e1){
-				System.out.println("Invalid input");
+        //This function adds a car to the database
+        //written by Matthew Walsh
+        public static void AddCar(MechanicShop esql) throws SQLException{//3
 
-		}
-		System.out.println("Enter Car's Make:");
-		String make = "";
-		try{
-				make = in.readLine();
-		}catch(Exception e1){
-				System.out.println("Invalid input");
+                //recives car VIN
+                System.out.println("Enter the car's VIN:");
+                String vin = "";
+                try{
+                                vin = in.readLine();
+                }catch(Exception e1){
+                                System.out.println("Invalid input");
 
-		}
-		System.out.println("Enter Car's Model:");
-		String model = "";
-		try{
-				model = in.readLine();
-		}catch(Exception e1){
-				System.out.println("Invalid input");
+                }
 
-		}
-		System.out.println("Enter Car's year");
-		int year = readChoice();
-		esql.executeUpdate("INSERT INTO Car VALUES ('" + vin + "','" + make + "' , '" + model + "'," + year + ");");
-		esql.executeQueryAndPrintResult("Select * from Car;");
-	}
+                //recives car's make
+                System.out.println("Enter Car's Make:");
+                String make = "";
+                try{
+                                make = in.readLine();
+                }catch(Exception e1){
+                                System.out.println("Invalid input");
+
+                }
+
+                //recieves car's model
+                System.out.println("Enter Car's Model:");
+                String model = "";
+                try{
+                                model = in.readLine();
+                }catch(Exception e1){
+                                System.out.println("Invalid input");
+
+                }
+
+                //recieves car's year
+                System.out.println("Enter Car's year");
+                int year = readChoice();
+
+                //execute SQL statements
+                esql.executeUpdate("INSERT INTO Car VALUES ('" + vin + "','" + make + "' , '" + model + "'," + year + ");");
+                esql.executeQueryAndPrintResult("Select * from Car;");
+        }
 	
 	//This function makes a new sercvice request for new customers or old
         //This function checks to make sure if it is a returning customer or new customer
@@ -604,17 +616,19 @@ public class MechanicShop{
 		esql.executeQueryAndPrintResult("SELECT C.id, C.fname, SUM(CR.bill) FROM Customer C, Closed_Request CR, Service_Request SR WHERE CR.rid = SR.rid AND SR.customer_id = C.id GROUP BY C.id HAVING SUM(CR.bill) < 100");
 	}
 	
-	public static void ListCustomersWithMoreThan20Cars(MechanicShop esql){//7
+	//written by Matthew Walsh
+	public static void ListCustomersWithMoreThan20Cars(MechanicShop esql) throws SQLException{//7
 		esql.executeQueryAndPrintResult("SELECT C.make, C.model, C.year FROM Car C, Service_Request SR WHERE C.year <= 1995 AND C.vin = SR.car_vin AND SR.odometer < 50000 GROUP BY C.vin");
 	}
 	
 	//List Make, Model, and Year of all cars build before 1995 having less than 50000 miles
 	//written by Raajitha Rajkumar
-	public static void ListCarsBefore1995With50000Milles(MechanicShop esql){//8
+	public static void ListCarsBefore1995With50000Milles(MechanicShop esql) throws SQLException{//8
 		esql.executeQueryAndPrintResult("SELECT C.make, C.model, C.year FROM Car C, Service_Request SR WHERE C.year <= 1995 AND C.vin = SR.car_vin AND SR.odometer < 50000 GROUP BY C.vin");
 	}
 	
-	public static void ListKCarsWithTheMostServices(MechanicShop esql)throws Exception{//9
+	//written by Matthew Walsh
+	public static void ListKCarsWithTheMostServices(MechanicShop esql)throws SQLException{//9
                 System.out.println("Enter minimum number of services: ");
                 int k;
                 String k_s = "";
@@ -633,7 +647,7 @@ public class MechanicShop{
 	//List the first name, last name and total bill of customers in descending order of
 	//their total bill for all cars brought to the mechanic
 	//written by Raajitha Rajkumar
-	public static void ListCustomersInDescendingOrderOfTheirTotalBill(MechanicShop esql){//10
+	public static void ListCustomersInDescendingOrderOfTheirTotalBill(MechanicShop esql) throws SQLException{//10
 		esql.executeQueryAndPrintResult("SELECT C.fname, C.lname, SUM(CR.bill) FROM Customer C, Closed_Request CR, Service_Request SR WHERE CR.rid = SR.rid AND SR.customer_id = C.id GROUP BY C.id ORDER BY SUM(CR.bill) DESC");
 		
 	}
