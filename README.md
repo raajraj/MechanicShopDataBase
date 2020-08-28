@@ -1,4 +1,4 @@
-#CS166 Project Phase 3
+# CS166 Project Phase 3
 
 ## MechanicShopDataBase
 This PostgreSQL database It contains car, customer, and mechanic data that corresponds with service requests. It also contains functions that allow users to view and modify shop data. This includes inititating and closing service requests, and viewing specific customers.
