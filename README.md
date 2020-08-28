@@ -3,7 +3,7 @@
 ## MechanicShopDataBase
 This PostgreSQL database It contains car, customer, and mechanic data that corresponds with service requests. It also contains functions that allow users to view and modify shop data. This includes inititating and closing service requests, and viewing specific customers.
 
-### Starting your database..
+### Starting Your Database
 Open the terminal to a PostgreSQL-enabled server. If you do not have PostgreSQL enabled, you can follow this download link (www.postgresql.org)  Use the following steps to clone the database's setup repository to your terminal:
 
 ```
